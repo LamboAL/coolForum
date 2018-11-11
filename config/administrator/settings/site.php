@@ -45,12 +45,7 @@ return [
         'contact_email.email' => 'Please fill in the correct contact email format.',
     ],
 
-    'before_save' => function(&$data)
-    {
-        if (strpos($data['site_name'], 'Powered by LaraBBS') === false) {
-            $data['site_name'] .= ' - Powered by LaraBBS';
-        }
-    },
+    
 
     'actions' => [
 

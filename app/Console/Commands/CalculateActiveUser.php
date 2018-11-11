@@ -7,20 +7,16 @@ use App\Models\User;
 
 class CalculateActiveUser extends Command
 {
-    // 供我们调用命令
     protected $signature = 'larabbs:calculate-active-user';
 
-    // 命令的描述
-    protected $description = '生成活跃用户';
+    protected $description = 'Generate active users';
 
-    // 最终执行的方法
     public function handle(User $user)
     {
-        // 在命令行打印一行信息
-        $this->info("开始计算...");
+        $this->info("Start calculating...");
 
         $user->calculateAndCacheActiveUsers();
 
-        $this->info("成功生成！");
+        $this->info("Successfully generated!");
     }
 }
