@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Notifications;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -16,6 +17,8 @@ class TopicReplied extends Notification implements ShouldQueue
 
     public function __construct(Reply $reply)
     {
+        $сategories = DB::table('categories')->get();
+      View::share('сategories', $сategories);
         $this->reply = $reply;
     }
 

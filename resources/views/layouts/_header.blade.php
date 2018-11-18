@@ -20,10 +20,9 @@
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
                 <li class="{{ active_class(if_route('topics.index')) }}"><a href="{{ route('topics.index') }}">Topic</a></li>
-                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 1))) }}"><a href="{{ route('categories.show', 1) }}">Share it</a></li>
-                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 2))) }}"><a href="{{ route('categories.show', 2) }}">Tutorial</a></li>
-                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 3))) }}"><a href="{{ route('categories.show', 3) }}">Question and answer</a></li>
-                <li class="{{ active_class((if_route('categories.show') && if_route_param('category', 4))) }}"><a href="{{ route('categories.show', 4) }}">Announcement</a></li>
+                @foreach($сategories as $category)
+                    <li class="{{ active_class((if_route('categories.show') && if_route_param('category', $category->id))) }}"><a href="{{ route('categories.show', $category->id) }}">{{$category->name}}</a></li>
+                @endforeach
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -32,7 +31,7 @@
                <!-- Authentication Links -->
                 @guest
                     <li><a href="{{ route('login') }}">Log in</a></li>
-                    <li><a href="{{ route('register') }}">Registered</a></li>
+                    <li><a href="{{ route('register') }}">Sign up</a></li>
                 @else
                     <li>
                         <a href="{{ route('topics.create') }}">

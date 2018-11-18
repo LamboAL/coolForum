@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 use App\Models\Topic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,6 +17,8 @@ class TopicsController extends Controller
 {
     public function __construct()
     {
+        $сategories = DB::table('categories')->get();
+      View::share('сategories', $сategories);
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 

@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 use App\Models\Reply;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,6 +13,8 @@ class RepliesController extends Controller
 {
     public function __construct()
     {
+        $сategories = DB::table('categories')->get();
+        View::share('сategories', $сategories);
         $this->middleware('auth');
     }
 

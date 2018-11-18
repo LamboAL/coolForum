@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Jobs;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -19,6 +20,8 @@ class TranslateSlug implements ShouldQueue
 
     public function __construct(Topic $topic)
     {
+        $сategories = DB::table('categories')->get();
+      View::share('сategories', $сategories);
         $this->topic = $topic;
     }
 

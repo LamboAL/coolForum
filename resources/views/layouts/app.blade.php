@@ -20,7 +20,7 @@
 <body>
     <div id="app" class="{{ route_class() }}-page">
 
-        @include('layouts._header')
+        @include('layouts._header', ['categories' => $сategories])
 
         <div class="container">
 
@@ -32,9 +32,7 @@
         @include('layouts._footer')
     </div>
 
-    @if (app()->isLocal())
-        @include('sudosu::user-selector')
-    @endif
+    
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
